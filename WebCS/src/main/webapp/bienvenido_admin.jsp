@@ -58,6 +58,7 @@
         <button class="button-blue" onclick="location.href='empresas.jsp'">Empresas</button>
         <button class="button-green" onclick="location.href='proyectos.jsp'">Proyectos</button>
         <button class="button-red" onclick="location.href='trabajadores.jsp'">Trabajadores</button>
+        <button class="button-red" onclick="location.href='marcajes.jsp'">Marcajes</button>
     </div>
 </body>
 </html>
