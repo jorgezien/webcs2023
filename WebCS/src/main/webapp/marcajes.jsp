@@ -7,7 +7,70 @@
     <head>
         <meta charset="UTF-8">
         <title>Marcajes</title>
-        <!-- ... (Estilos CSS) ... -->
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f2f2f2;
+                margin: 0;
+                padding: 20px;
+            }
+
+            h1 {
+                text-align: center;
+                margin-top: 0;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin: 0 auto;
+                margin-bottom: 20px;
+            }
+
+            th, td {
+                padding: 10px;
+                text-align: left;
+                border-bottom: 1px solid #ddd;
+            }
+
+            th {
+                background-color: #f2f2f2;
+                font-weight: bold;
+            }
+
+            .delete-button {
+                background-color: #ff6b6b;
+                color: #ffffff;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .delete-button:hover {
+                opacity: 0.8;
+            }
+
+            .delete-button-container {
+                text-align: right;
+            }
+
+            .back-button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                background-color: #4285f4;
+                color: #ffffff;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .back-button:hover {
+                opacity: 0.8;
+            }
+        </style>
     </head>
     <body>
         <a href="http://localhost:8080/WebCS/bienvenido_admin.jsp" class="back-button">Atrás</a>
@@ -17,7 +80,7 @@
                 <th>ID</th>
                 <th>Fecha</th>
                 <th>Tipo de Marcaje</th>
-                <th>ID Usuario</th>
+                <th>ID de Usuario</th>
                 <th>Acciones</th>
             </tr>
             <%!
@@ -42,18 +105,17 @@
 
                 while (rs_marcaje.next()) {
                     int id = rs_marcaje.getInt("id");
-                    Timestamp fecha = rs_marcaje.getTimestamp("fecha");
-                    String tipo_marcaje = rs_marcaje.getString("tipo_marcaje");
+                    Date fecha = rs_marcaje.getDate("fecha");
+                    char tipo_marcaje = rs_marcaje.getString("tipo_marcaje").charAt(0);
                     int id_usuario = rs_marcaje.getInt("id_usuario");
 
-                    // Usar la clase Marcaje (si existe) o reemplazarla por el código apropiado
                     Marcaje marcaje = new Marcaje(id, fecha, tipo_marcaje, id_usuario);
             %>
             <tr>
                 <td><%= marcaje.getId() %></td>
                 <td><%= marcaje.getFecha() %></td>
-                <td><%= marcaje.getTipoMarcaje() %></td>
-                <td><%= marcaje.getIdUsuario() %></td>
+                <td><%= marcaje.getTipo_marcaje() %></td>
+                <td><%= marcaje.getId_usuario() %></td>
                 <td>
                     <form method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este marcaje?')">
                         <input type="hidden" name="marcaje_id" value="<%= marcaje.getId() %>">

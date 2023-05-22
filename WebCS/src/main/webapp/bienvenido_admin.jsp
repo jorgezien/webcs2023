@@ -46,6 +46,10 @@
         .button-red {
             background-color: #ff6b6b;
         }
+        
+        .button-purple {
+            background-color: #FF80FF;
+        }
 
         .button-container button:hover {
             opacity: 0.8;
@@ -58,7 +62,7 @@
         <button class="button-blue" onclick="location.href='empresas.jsp'">Empresas</button>
         <button class="button-green" onclick="location.href='proyectos.jsp'">Proyectos</button>
         <button class="button-red" onclick="location.href='trabajadores.jsp'">Trabajadores</button>
-        <button class="button-red" onclick="location.href='marcajes.jsp'">Marcajes</button>
+        <button class="button-purple" onclick="location.href='marcajes.jsp'">Marcajes</button>
     </div>
 </body>
 </html>
