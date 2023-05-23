@@ -17,6 +17,10 @@
                 text-align: center;
                 margin-top: 0;
             }
+            h3 {
+                text-align: center;
+                margin-top: 0;
+            }
 
             .button-container {
                 display: flex;
@@ -34,10 +38,7 @@
                 border-radius: 4px;
                 cursor: pointer;
             }
-            h3 {
-                text-align: center;
-                margin-top: 0;
-            }
+
             .button-blue {
                 background-color: #70a1ff;
             }
@@ -60,13 +61,12 @@
         </style>
     </head>
     <body>
-        <h1>Bienvenido, <%= session.getAttribute("username") %>👨‍🏭</h1>
+        <h1>Bienvenido, <%= session.getAttribute("username") %>🧑</h1>
         <h3>ID: <%= session.getAttribute("id_user") %></h3>
+
         <div class="button-container">
-            <button class="button-blue" onclick="location.href = 'empresas.jsp'">Empresas</button>
-            <button class="button-green" onclick="location.href = 'proyectos.jsp'">Proyectos</button>
-            <button class="button-red" onclick="location.href = 'trabajadores.jsp'">Trabajadores</button>
-            <button class="button-purple" onclick="location.href = 'marcajes.jsp'">Marcajes</button>
+            <button class="button-blue" onclick="location.href = 'marcar.jsp'">Marcajes</button>
+            <button class="button-green" onclick="location.href = 'informacion_empresa.jsp'">Información de la empresa</button>
         </div>
     </body>
 </html>

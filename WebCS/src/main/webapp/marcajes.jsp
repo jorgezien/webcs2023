@@ -79,9 +79,9 @@
             <tr>
                 <th>ID</th>
                 <th>Fecha</th>
+                <th>Hora</th>
                 <th>Tipo de Marcaje</th>
                 <th>ID de Usuario</th>
-                <th>Acciones</th>
             </tr>
             <%!
             // Datos de conexión a la base de datos
@@ -105,7 +105,10 @@
 
                 while (rs_marcaje.next()) {
                     int id = rs_marcaje.getInt("id");
-                    Date fecha = rs_marcaje.getDate("fecha");
+                    Timestamp timestamp = rs_marcaje.getTimestamp("fecha");
+                    Date fecha = new Date(timestamp.getTime());
+                    Time hora = new Time(timestamp.getTime());
+                    
                     char tipo_marcaje = rs_marcaje.getString("tipo_marcaje").charAt(0);
                     int id_usuario = rs_marcaje.getInt("id_usuario");
 
@@ -114,14 +117,10 @@
             <tr>
                 <td><%= marcaje.getId() %></td>
                 <td><%= marcaje.getFecha() %></td>
+                <td><%= hora %></td>
                 <td><%= marcaje.getTipo_marcaje() %></td>
                 <td><%= marcaje.getId_usuario() %></td>
-                <td>
-                    <form method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este marcaje?')">
-                        <input type="hidden" name="marcaje_id" value="<%= marcaje.getId() %>">
-                        <input class="delete-button" type="submit" value="Borrar">
-                    </form>
-                </td>
+
             </tr>
             <%
             }
@@ -136,9 +135,6 @@
             }
             %>
 
-            <tr>
-                <!-- Formulario para añadir marcajes -->
-            </tr>
         </table>
     </body>
 </html>

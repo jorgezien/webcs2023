@@ -65,7 +65,7 @@ public class LoginProcess extends HttpServlet {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection(dbURL, dbUser, dbPassword);
 
-            String query = "SELECT tipo_usuario FROM usuarios WHERE username = ? AND password = ?";
+            String query = "SELECT tipo_usuario, id_user FROM usuarios WHERE username = ? AND password = ?";
             PreparedStatement statement = connection.prepareStatement(query);
             statement.setString(1, username);
             statement.setString(2, password);
@@ -76,6 +76,11 @@ public class LoginProcess extends HttpServlet {
                 // Autenticación exitosa
                 HttpSession session = request.getSession();
                 session.setAttribute("username", username);
+                // Almacena el id_user en la sesión
+                String idUser = resultSet.getString("id_user");
+                session.setAttribute("id_user", idUser);
+                
+                // Redirecciona al sujeto a la página correspondiente dependiendo si es Admin o Usuario.
                 String tipo_usuario = resultSet.getString("tipo_usuario");
                 if ("A".equals(tipo_usuario)) {
                     response.sendRedirect("bienvenido_admin.jsp");

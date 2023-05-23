@@ -1,10 +1,9 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Login</title>
+  <title>Error de inicio de sesión</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -49,8 +48,7 @@
       width: 100%;
       padding: 10px;
       padding-top: 10px;
-      
-      background-color: #4CAF50;
+      background-color: #e60000;
       color: #fff;
       border: none;
       border-radius: 4px;
@@ -61,11 +59,9 @@
     input[type="submit"] {
       margin-top: 15px;
     }
-
-    
     
     input[type="submit"]:hover {
-      background-color: #45a049;
+      background-color: #ff0000;
     }
     
     .error-message {
@@ -75,13 +71,12 @@
   </style>
 </head>
 <body>
-  <h1>Login 🚀</h1>
-  <form action="LoginProcess" method="post">
-    <label for="username">Username</label>
-    <input type="text" id="username" name="username" required>
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" required>
-    <input  type="submit" value="Log in">
+  <h1>❌Recurso no encontrado❌</h1>
+  <form>
+    <p class="error-message">Estás intentando acceder a un recurso que no existe</p>
+    <p class="error-message">Revisa si has escrito bien la URL</p>
+    <input type="button" value="Ir atrás" onclick="history.back()">
   </form>
 </body>
 </html>
+
