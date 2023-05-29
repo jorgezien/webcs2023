@@ -57,11 +57,39 @@
             .button-container button:hover {
                 opacity: 0.8;
             }
+            .logout-button {
+                position: absolute;
+                top: 10px;
+                left: 10px;
+                padding: 10px 20px;
+                font-size: 16px;
+                font-weight: bold;
+                color: #fff;
+                background-color: #ff4d4d;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                text-decoration: none;
+            }
+
+            .logout-button:hover {
+                opacity: 0.8;
+            }
         </style>
     </head>
     <body>
         <h1>Bienvenido, <%= session.getAttribute("username") %>👨‍🏭</h1>
         <h3>ID: <%= session.getAttribute("id_user") %></h3>
+        <a class="logout-button" href="#" onclick="confirmLogout()">Cerrar sesión</a>
+
+        <script>
+            function confirmLogout() {
+                var logout = confirm("¿Estás seguro de que quieres cerrar la sesión?");
+                if (logout) {
+                    window.location.href = "LogoutProcess";
+                }
+            }
+        </script>
         <div class="button-container">
             <button class="button-blue" onclick="location.href = 'empresas.jsp'">Empresas</button>
             <button class="button-green" onclick="location.href = 'proyectos.jsp'">Proyectos</button>

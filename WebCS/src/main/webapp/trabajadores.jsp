@@ -157,8 +157,6 @@
             <%
             }
 
-            // ... (Código para eliminar y añadir usuarios) ...
-
             } catch (Exception e) {
                 e.printStackTrace();
                 // Manejo de errores
@@ -167,9 +165,6 @@
             }
             %>
 
-            <tr>
-                <!-- Formulario para añadir usuarios -->
-            </tr>
         </table>
     </body>
 </html>

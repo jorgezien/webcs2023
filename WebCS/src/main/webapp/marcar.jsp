@@ -137,7 +137,7 @@
         if (request.getParameter("salida") != null) {
             ps_marcaje.setString(1, fecha);
             ps_marcaje.setString(2, "S");
-            ps_marcaje.setInt(3, id_usuario);
+            ps_marcaje.setInt(3, id);
             ps_marcaje.executeUpdate();
 
             %>

@@ -1,10 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%@ page import="java.sql.*" %>
+<%@ page import="Modelo.Usuario" %>
 
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Login</title>
+        <title>Registro</title>
         <style>
             body {
                 font-family: Arial, sans-serif;
@@ -67,64 +68,48 @@
             input[type="submit"]:hover {
                 background-color: #45a049;
             }
+            input[type="date"] { /* Agregamos la regla para los campos de tipo date */
+                width: 100%;
+                padding: 10px;
+                border: 2px solid #b2b2b2;
+                background-color: #fff;
+                border-radius: 4px;
+                box-sizing: border-box;
+                color: black;
+            }
 
             .error-message {
                 color: red;
                 margin-top: 10px;
             }
-            .button {
-                display: block;
-                margin-top: 15px;
-                padding: 10px;
-                width: 100%;
-                background-color: #4CAF50;
-                color: #fff;
-                text-align: center;
-                font-size: 15px;
-                text-decoration: none;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                box-sizing: border-box;
-                transition: background-color 0.3s ease;
-            }
 
-            .button:hover {
-                background-color: #45a049;
-            }
-            .start-page-button {
-                position: absolute;
-                top: 10px;
-                left: 10px;
-                padding: 10px 20px;
-                font-size: 16px;
-                font-weight: bold;
-                color: #fff;
-                background-color: #3366ff;
-                border: none;
-                border-radius: 4px;
-                cursor: pointer;
-                text-decoration: none;
-            }
-
-            .start-page-button:hover {
-                opacity: 0.8;
-            }
         </style>
     </head>
     <body>
-        <a class="start-page-button" href="./" onclick="confirmLogout()">Página de inicio</a>
-        <h1>Login 🚀</h1>
-        <form action="LoginProcess" method="post">
-            <label for="username">Username</label>
+        <h1>Registro 🚀</h1>
+        <form action="RegisterProcess" method="post">
+            <label for="username">Nombre de usuario</label>
             <input type="text" id="username" name="username" required>
-            <label for="password">Password</label>
+            <label for="password">Contraseña</label>
             <input type="password" id="password" name="password" required>
-            <input  type="submit" value="Log in">
-            <a href="registro.jsp" class="button">Registrarse</a>
+            <!-- otros campos -->
+            <label for="dni">DNI</label>
+            <input type="text" id="dni" name="dni" required>
+            <label for="nombre">Nombre</label>
+            <input type="text" id="nombre" name="nombre" required>
+            <label for="apellidos">Apellidos</label>
+            <input type="text" id="apellidos" name="apellidos" required>
+            <label for="fecha_alta">Fecha de alta</label>
+            <input type="date" id="fecha_alta" name="fecha_alta" required>
+            <label for="fecha_baja">Fecha de baja</label>
+            <input type="date" id="fecha_baja" name="fecha_baja">
+            <label for="tipo_usuario">Tipo de usuario</label>
+            <select id="tipo_usuario" name="tipo_usuario" required>
+                <option value="A">A</option>
+                <option value="U">U</option>
+            </select>
 
+            <input  type="submit" value="Registrarse">
         </form>
-
-
     </body>
 </html>

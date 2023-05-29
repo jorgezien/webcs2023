@@ -4,9 +4,25 @@
         <servlet-name>LoginProcess</servlet-name>
         <servlet-class>Controlador.LoginProcess</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RegisterProcess</servlet-name>
+        <servlet-class>Controlador.RegisterProcess</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LogoutProcess</servlet-name>
+        <servlet-class>Controlador.LogoutProcess</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginProcess</servlet-name>
         <url-pattern>/LoginProcess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RegisterProcess</servlet-name>
+        <url-pattern>/RegisterProcess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LogoutProcess</servlet-name>
+        <url-pattern>/LogoutProcess</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

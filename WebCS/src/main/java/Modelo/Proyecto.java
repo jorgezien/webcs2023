@@ -36,5 +36,10 @@ public class Proyecto {
         this.id_empresa = id_empresa;
     }
     
+    public Proyecto(int id_proyecto, String nombre) {
+        this.id_proyecto = id_proyecto;
+        this.nombre = nombre;
+    }
+    
     
 }
