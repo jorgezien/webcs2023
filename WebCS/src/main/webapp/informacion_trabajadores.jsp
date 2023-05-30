@@ -55,7 +55,7 @@
         </style>
     </head>
     <body>
-        <a href="http://localhost:8080/WebCS/bienvenido_usuario.jsp" class="back-button">Atrás</a>
+        <a href="http://localhost:8080/WebCS/bienvenido_admin.jsp" class="back-button">Atrás</a>
         <h1>Dashboard</h1>
         <h1>Bienvenido, <%= session.getAttribute("username") %></h1>
         <table>
@@ -63,7 +63,6 @@
                 <th>Nombre Empresa</th>
                 <th>Nombre Proyecto</th>
                 <th>ID Usuario</th>
-                <th>DNI</th>
                 <th>Usuario</th>
             </tr>
             <%!
@@ -79,28 +78,25 @@
             try {
                 Class.forName("com.mysql.jdbc.Driver");
                 conn = DriverManager.getConnection(url, usuarioBD, contrasenaBD);
-                String query = "SELECT empresa.nombre_empresa, proyectos.nombre AS nombre_proyecto, usuarios.id_user AS id_usuario, usuarios.username AS usuario, usuarios.dni as dni " +
+                String query = "SELECT empresa.nombre_empresa, proyectos.nombre AS nombre_proyecto, usuarios.id_user AS id_usuario, usuarios.username AS usuario " +
                                "FROM empresa " +
                                "INNER JOIN proyectos ON empresa.id_empresa = proyectos.id_empresa " +
                                "INNER JOIN usuarios_proyectos ON proyectos.id_proyecto = usuarios_proyectos.id_proyecto " +
-                               "INNER JOIN usuarios ON usuarios_proyectos.id_user = usuarios.id_user " +
-                               "WHERE usuarios.id_user = ?";
+                               "INNER JOIN usuarios ON usuarios_proyectos.id_user = usuarios.id_user ";
+                              
                 pstmt = conn.prepareStatement(query);
-                pstmt.setString(1, String.valueOf(session.getAttribute("id_user")));
                 rs = pstmt.executeQuery();
 
                 while (rs.next()) {
                     String nombre_empresa = rs.getString("nombre_empresa");
                     String nombre_proyecto = rs.getString("nombre_proyecto");
                     int id_usuario = rs.getInt("id_usuario");
-                    String dni = rs.getString("dni");
                     String usuario = rs.getString("usuario");
             %>
             <tr>
                 <td><%= nombre_empresa %></td>
                 <td><%= nombre_proyecto %></td>
                 <td><%= id_usuario %></td>
-                <td><%= dni %></td>
                 <td><%= usuario %></td>
             </tr>
             <%
