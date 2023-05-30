@@ -12,6 +12,10 @@
         <servlet-name>LogoutProcess</servlet-name>
         <servlet-class>Controlador.LogoutProcess</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>GenerarInforme</servlet-name>
+        <servlet-class>Controlador.GenerarInforme</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoginProcess</servlet-name>
         <url-pattern>/LoginProcess</url-pattern>
@@ -23,6 +27,10 @@
     <servlet-mapping>
         <servlet-name>LogoutProcess</servlet-name>
         <url-pattern>/LogoutProcess</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>GenerarInforme</servlet-name>
+        <url-pattern>/GenerarInforme</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

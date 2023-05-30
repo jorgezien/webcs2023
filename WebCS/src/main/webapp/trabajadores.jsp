@@ -111,7 +111,7 @@
                 conn = DriverManager.getConnection(url, usuarioBD, contrasenaBD);
                 stmt = conn.createStatement();
                 String query_usuario = "SELECT * FROM usuarios";
-
+                    
                 rs_usuario = stmt.executeQuery(query_usuario);
 
                 while (rs_usuario.next()) {
@@ -158,6 +158,12 @@
                     <form method="POST" onsubmit="return confirm('¿Estás seguro de eliminar este usuario?')">
                         <input type="hidden" name="usuario_id" value="<%= usuario.getId_user() %>">
                         <input class="delete-button" type="submit" value="Borrar">
+                    </form>
+                </td>
+                <td>
+                    <form method="POST" action="GenerarInforme">
+                        <input type="hidden" name="usuario_id" value="<%= usuario.getId_user() %>">
+                        <input type="submit" value="Generar Informe">
                     </form>
                 </td>
             </tr>
