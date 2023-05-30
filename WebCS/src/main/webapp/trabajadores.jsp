@@ -1,7 +1,14 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="Modelo.Usuario" %>
-
+<%
+    String username = (String)session.getAttribute("username");
+    String id_user = (String)session.getAttribute("id_user");
+    if(username == null || id_user == null){
+        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -109,7 +116,7 @@
 
                 while (rs_usuario.next()) {
                     int id = rs_usuario.getInt("id_user");
-                    String username = rs_usuario.getString("username");
+                    String username_ = rs_usuario.getString("username");
                     String dni = rs_usuario.getString("dni");
                     String nombre = rs_usuario.getString("nombre");
                     String password = rs_usuario.getString("password");
@@ -136,7 +143,7 @@
                     
              
                     // Usar la clase Usuario (si existe) o reemplazarla por el código apropiado
-                    Usuario usuario = new Usuario(id, username, password, dni, nombre, apellidos, fecha_alta, fecha_baja, tipo_usuario);
+                    Usuario usuario = new Usuario(id, username_, password, dni, nombre, apellidos, fecha_alta, fecha_baja, tipo_usuario);
             %>
             <tr>
                 <td><%= usuario.getId_user() %></td>

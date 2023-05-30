@@ -1,5 +1,12 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
+<%
+    String username = (String)session.getAttribute("username");
+    String id_user = (String)session.getAttribute("id_user");
+    if(username == null || id_user == null){
+        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        return;
+    }
+%>
 <!DOCTYPE html>
 <html>
     <head>
