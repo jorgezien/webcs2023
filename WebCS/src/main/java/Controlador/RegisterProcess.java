@@ -112,6 +112,7 @@ public class RegisterProcess extends HttpServlet {
             ResultSet resultSet = query_ps.executeQuery();
             
             out.print("Usuario registrado con éxito!");
+            LoginProcess.logger.info("Usuario registrado correctamente.");
             HttpSession session = request.getSession();
             session.setAttribute("username", username);
             if (resultSet.next()){

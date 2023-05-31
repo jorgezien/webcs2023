@@ -1,9 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%
+<%  
     String username = (String)session.getAttribute("username");
     String id_user = (String)session.getAttribute("id_user");
     if(username == null || id_user == null){
-        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        response.sendRedirect("error_autenticacion.jsp"); // Redirigir a la página de error
         return;
     }
 %>
@@ -102,7 +102,7 @@
             <button class="button-green" onclick="location.href = 'proyectos.jsp'">Proyectos</button>
             <button class="button-red" onclick="location.href = 'trabajadores.jsp'">Trabajadores</button>
             <button class="button-red" onclick="location.href = 'informacion_trabajadores.jsp'">Trabajadores y Proyectos</button>
-            <button class="button-purple" onclick="location.href = 'marcajes.jsp'">Marcajes</button>
+            <button class="button-purple" onclick="location.href = 'marcajes.jsp'">Informe de marcajes</button>
         </div>
     </body>
 </html>

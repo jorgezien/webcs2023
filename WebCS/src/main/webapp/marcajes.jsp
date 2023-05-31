@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="Modelo.Marcaje" %>
-<%
+<%  
     String username = (String)session.getAttribute("username");
     String id_user = (String)session.getAttribute("id_user");
     if(username == null || id_user == null){
-        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        response.sendRedirect("error_autenticacion.jsp"); // Redirigir a la página de error
         return;
     }
 %>
@@ -81,7 +81,7 @@
     </head>
     <body>
         <a href="http://localhost:8080/WebCS/bienvenido_admin.jsp" class="back-button">Atrás</a>
-        <h1>Marcajes</h1>
+        <h1>Informe de marcajes</h1>
         <table>
             <tr>
                 <th>ID</th>

@@ -113,6 +113,7 @@
         </style>
     </head>
     <body>
+
         <a class="start-page-button" href="./" onclick="confirmLogout()">Página de inicio</a>
         <h1>Login 🚀</h1>
         <form action="LoginProcess" method="post">

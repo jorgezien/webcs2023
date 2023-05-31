@@ -2,11 +2,11 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="Modelo.Empresa" %>
 <%@ page import="Modelo.Proyecto" %>
-<%
+<%  
     String username = (String)session.getAttribute("username");
     String id_user = (String)session.getAttribute("id_user");
     if(username == null || id_user == null){
-        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        response.sendRedirect("error_autenticacion.jsp"); // Redirigir a la página de error
         return;
     }
 %>
@@ -78,6 +78,34 @@
             .back-button:hover {
                 opacity: 0.8;
             }
+
+            .add-project-form {
+                display: grid;
+                grid-template-columns: 1fr 1fr auto;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .add-project-form input[type="text"],
+            .add-project-form input[type="number"] {
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                padding: 5px;
+                font-size: 14px;
+            }
+
+            .add-project-form input[type="submit"] {
+                background-color: #4285f4;
+                color: #ffffff;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .add-project-form input[type="submit"]:hover {
+                opacity: 0.8;
+            }
         </style>
 
     </head>
@@ -143,7 +171,7 @@
 
                     try {
                         // Eliminar el proyecto
-                        String delete_query = "DELETE FROM proyecto WHERE id_proyecto = ?";
+                        String delete_query = "DELETE FROM proyectos WHERE id_proyecto = ?";
                         ps_delete_proyecto = conn.prepareStatement(delete_query);
                         ps_delete_proyecto.setInt(1, proyecto_id);
                         ps_delete_proyecto.executeUpdate();
@@ -160,13 +188,19 @@
                 if (request.getParameter("nombre_proyecto") != null && request.getParameter("id_empresa") != null) {
                     String nombre_proyecto = request.getParameter("nombre_proyecto");
                     int id_empresa = Integer.parseInt(request.getParameter("id_empresa"));
-
+                    String last_id_query = "SELECT MAX(id_proyecto) as max_id FROM proyectos";
+                    ResultSet rs_max = stmt.executeQuery(last_id_query);
+                    int new_id_proyecto = 1;  // Inicializar a 1 para el primer registro
+                    if (rs_max.next()) {
+                        new_id_proyecto = rs_max.getInt("max_id") + 1;
+                    }
                     try {
                         // Insertar el proyecto en la base de datos
-                        String insert_query = "INSERT INTO proyecto (nombre_proyecto, id_empresa) VALUES (?, ?)";
+                        String insert_query = "INSERT INTO proyectos (id_proyecto, nombre, id_empresa) VALUES (?, ?, ?)";
                         ps_insert_proyecto = conn.prepareStatement(insert_query);
-                        ps_insert_proyecto.setString(1, nombre_proyecto);
-                        ps_insert_proyecto.setInt(2, id_empresa);
+                        ps_insert_proyecto.setInt(1, new_id_proyecto);
+                        ps_insert_proyecto.setString(2, nombre_proyecto);
+                        ps_insert_proyecto.setInt(3, id_empresa);
                         ps_insert_proyecto.executeUpdate();
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -223,7 +257,7 @@
 
             <tr>
                 <td>
-                    <form method="POST">
+                    <form class="add-project-form" method="POST">
                         <input type="text" name="nombre_proyecto" placeholder="Nombre del proyecto" required>
                         <input type="number" name="id_empresa" placeholder="ID de la empresa" required>
                         <input type="submit" value="Añadir">

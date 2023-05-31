@@ -2,11 +2,11 @@
 <%@ page import="java.sql.*" %>
 <%@ page import="Modelo.Empresa" %>
 <%@ page import="Modelo.Proyecto" %>
-<%
+<%  
     String username = (String)session.getAttribute("username");
     String id_user = (String)session.getAttribute("id_user");
     if(username == null || id_user == null){
-        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        response.sendRedirect("error_autenticacion.jsp"); // Redirigir a la página de error
         return;
     }
 %>

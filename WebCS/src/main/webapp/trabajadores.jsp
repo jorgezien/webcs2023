@@ -1,11 +1,11 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ page import="java.sql.*" %>
 <%@ page import="Modelo.Usuario" %>
-<%
+<%  
     String username = (String)session.getAttribute("username");
     String id_user = (String)session.getAttribute("id_user");
     if(username == null || id_user == null){
-        response.sendRedirect("error.jsp"); // Redirigir a la página de error
+        response.sendRedirect("error_autenticacion.jsp"); // Redirigir a la página de error
         return;
     }
 %>
@@ -61,6 +61,8 @@
             .delete-button-container {
                 text-align: right;
             }
+            
+            
 
             .back-button {
                 position: absolute;
@@ -76,6 +78,23 @@
 
             .back-button:hover {
                 opacity: 0.8;
+            }
+            
+            .generate {
+                background-color: #3399ff;
+                color: #ffffff;
+                border: none;
+                padding: 5px 10px;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+
+            .generate:hover {
+                opacity: 0.8;
+            }
+
+            .generate-container {
+                text-align: right;
             }
         </style>
     </head>
@@ -163,7 +182,7 @@
                 <td>
                     <form method="POST" action="GenerarInforme">
                         <input type="hidden" name="usuario_id" value="<%= usuario.getId_user() %>">
-                        <input type="submit" value="Generar Informe">
+                        <input class="generate" type="submit" value="Generar Informe">
                     </form>
                 </td>
             </tr>

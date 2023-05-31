@@ -75,6 +75,7 @@ public class GenerarInforme extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        LoginProcess.logger.info("Generando informes...");
         String id_user = request.getParameter("usuario_id");
 
         Connection conn = null;
@@ -91,6 +92,7 @@ public class GenerarInforme extends HttpServlet {
             rs_usuario = stmt.executeQuery(query_usuario);
             stmt2 = conn.createStatement();
             rs_marcajes = stmt2.executeQuery(query_marcajes);
+            
 
             if (rs_usuario.next()) {
                 Usuario usuario = new Usuario(rs_usuario.getInt("id_user"),
@@ -133,7 +135,8 @@ public class GenerarInforme extends HttpServlet {
                 }
                 response.setContentType("text/plain");
                 response.setHeader("Content-disposition", "attachment; filename=informe_" + usuario.getId_user() + ".txt");
-
+                   
+                LoginProcess.logger.info("Informes generados correctamente.");
                 try (PrintWriter out = response.getWriter()) {
                     out.println(contenidoInforme);
                 }

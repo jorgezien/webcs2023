@@ -15,9 +15,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.logging.Logger;
 
 public class LoginProcess extends HttpServlet {
-
+    public static Logger logger = Logger.getLogger("web");
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -54,6 +55,8 @@ public class LoginProcess extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        logger.info("Iniciando sesión...");
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
@@ -71,6 +74,7 @@ public class LoginProcess extends HttpServlet {
             statement.setString(2, password);
 
             ResultSet resultSet = statement.executeQuery();
+            logger.info("Sesión iniciada, redirigiendo...");
 
             if (resultSet.next()) {
                 // Autenticación exitosa
@@ -88,6 +92,7 @@ public class LoginProcess extends HttpServlet {
                     response.sendRedirect("bienvenido_usuario.jsp");
                 }
             } else {
+                logger.severe("Se ha producido un error al iniciar sesión.");
                 // Autenticación fallida
                 response.sendRedirect("error.jsp");
             }
