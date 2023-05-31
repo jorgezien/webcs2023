@@ -1,0 +1,8 @@
+Modelo\Marcaje.class
+Modelo\Proyecto.class
+Modelo\Empresa.class
+Controlador\GenerarInforme.class
+Modelo\Usuario.class
+Controlador\LoginProcess.class
+Controlador\LogoutProcess.class
+Controlador\RegisterProcess.class
