@@ -2,12 +2,11 @@
 
 ## Arquitectura Web y C/S - Práctica Final Laboratorio
 
-### Jorge Martín García - 09085454V
+### Jorge Martín García
 
 ---
 
 Grado en Ingeniería de Computadores  
-Profesor: Javier Albert Segui  
 Asignatura: Arquitectura Web y C/S  
 Curso 2022/2023 - Convocatoria Extraordinaria
 
@@ -57,7 +56,7 @@ Curso 2022/2023 - Convocatoria Extraordinaria
 
 ---
 
-## Implementación
+## Características
 
 - Conexión a la base de datos mediante JDBC.
 - Registro y login de usuarios.
@@ -80,13 +79,3 @@ Curso 2022/2023 - Convocatoria Extraordinaria
 ## Github
 
 Repositorio: [https://github.com/jorgezien/webcs2023](https://github.com/jorgezien/webcs2023)
-
----
-
-## Bibliografía
-
-- ManualWeb: Introducción a Servlets
-- YouTube: Tutorial de desarrollo web
-- Clases de Informática Web: Java con Bases de Datos
-- StackOverflow: Conexión a base de datos en Java
-- RedesZone: MobaXterm, una completa terminal para Windows
