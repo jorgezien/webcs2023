@@ -1,8 +1,6 @@
-# Edificio Politécnico Superior
+# Arquitectura Web y C/S - Práctica Final Laboratorio
 
-## Arquitectura Web y C/S - Práctica Final Laboratorio
-
-### Jorge Martín García
+## Jorge Martín García
 
 ---
 
