@@ -12,18 +12,6 @@ Curso 2022/2023 - Convocatoria Extraordinaria
 
 ---
 
-## Índice
-
-1. Análisis y presentación del problema
-2. Herramientas utilizadas
-3. Problemas encontrados
-4. Implementación
-5. Mejoras implementadas
-6. Github
-7. Bibliografía
-
----
-
 ## Análisis y presentación del problema
 
 "Ingenieros al Peso S.A." necesita desarrollar una herramienta web para gestionar eficientemente su plantilla de trabajadores. Los requisitos son:
